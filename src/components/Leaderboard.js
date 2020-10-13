@@ -16,7 +16,7 @@ const Leaderboard = ({ type }) => {
 
     return (
         <>
-            <h1>{type.toUpperCase()}</h1>
+            <h1>{type.slice(0, -1).toUpperCase()} LEADERBOARD</h1>
         <div className="leaderboard">{leaderboard.map((leader, index) => {
             return (
             <ul key={index + leader.display_name}>
