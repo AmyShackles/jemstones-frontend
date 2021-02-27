@@ -17,6 +17,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 main {
   margin-top: 75px;
@@ -25,14 +26,7 @@ main {
 .App-link {
   color: #61dafb;
 }
-@media screen and (max-width: 700px) {
-  main img {
-    height: 95px;
-  }
-  nav a {
-    font-size: small;
-  }
-}
+
 
 nav {
   display: flex;
@@ -52,12 +46,9 @@ nav a:hover, nav a:focus {
   font-style: italic;
   background: white;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+
 img { 
-  max-width: 64px;
+  width: 50px;
 }
 /* .displayName {
   display: flex;
@@ -78,6 +69,111 @@ caption {
   font-size: xx-large;
   font-weight: bold;
 }
+td, th {
+  font-size: small;
+}
 td {
-  padding: 10px;
+  padding: 5px;
+}
+
+ @media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  { 
+  caption {
+    display: flex;
+    justify-content:center;
+  }
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th { 
+		display: block; 
+	}
+  tbody {
+    width: 80vw;
+    margin: auto;
+  }
+  tr {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  td {
+    display: flex;
+    flex-direction: column;
+
+  }
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+	}
+	
+	td:before { 
+		/* Now like a table header */
+ 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Colestones"; }
+	td:nth-of-type(2):before { content: "Gerstones"; }
+	td:nth-of-type(3):before { content: "Harrystones"; }
+	td:nth-of-type(4):before { content: "Jamstones";}
+	td:nth-of-type(5):before { content: "Janstones"; }
+	td:nth-of-type(6):before { content: "Jemstones"; }
+	td:nth-of-type(7):before { content: "Jomstones"; }
+	td:nth-of-type(8):before { content: "Jumstones"; }
+	td:nth-of-type(9):before { content: "Total Stones"; }
+  nav {
+    justify-content: space-between;
+  }
+
+
+  main {
+    margin-top: 115px;
+  }
+  img {
+    max-width: unset;
+  }
+  .displayName {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items:center;
+  }
+  .displayName img {
+    width: 50vw;
+    max-width: 200px;
+    margin:15px;
+  }
+  picture img {
+    max-width: 100px;
+  }
+  th {
+    font-size:large;
+  }
+  td {
+    font-size:medium;
+  }
+
+}
+@media screen and (max-width: 700px) {
+  nav a {
+    writing-mode: vertical-lr;
+    text-orientation:upright;
+    padding: 15px 7px;
+    height: 80px;
+    font-size: small;
+  }
 }

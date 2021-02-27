@@ -9,15 +9,15 @@ function App() {
       <div className="App">
           <header className="App-header">
               <nav>
-                  <NavLink to="/">Stones</NavLink>
-                  <NavLink to="/col">Colestones</NavLink>
-                  <NavLink to="/ger">Gerstones</NavLink>
-                  <NavLink to="/har">Harrystones</NavLink>
-                  <NavLink to="/jam">Jamstones</NavLink>
-                  <NavLink to="/jan">Janstones</NavLink>
-                  <NavLink to="/jem">Jemstones</NavLink>
-                  <NavLink to="/jom">Jomstones</NavLink>
-                  <NavLink to="/jum">Jumstones</NavLink>
+                  <NavLink to="/">Total</NavLink>
+                  <NavLink to="/col">Cole</NavLink>
+                  <NavLink to="/ger">Ger</NavLink>
+                  <NavLink to="/har">Harry</NavLink>
+                  <NavLink to="/jam">Jam</NavLink>
+                  <NavLink to="/jan">Jan</NavLink>
+                  <NavLink to="/jem">Jem</NavLink>
+                  <NavLink to="/jom">Jom</NavLink>
+                  <NavLink to="/jum">Jum</NavLink>
               </nav>
           </header>
           <main>
