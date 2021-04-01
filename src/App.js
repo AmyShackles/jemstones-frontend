@@ -19,6 +19,7 @@ function App() {
                     <NavLink to="/jem">Jem</NavLink>
                     <NavLink to="/jom">Jom</NavLink>
                     <NavLink to="/jum">Jum</NavLink>
+                    <NavLink to="/tice">Tice</NavLink>
                 </nav>
             </header>
             <main>
@@ -33,6 +34,7 @@ function App() {
                     <Leaderboard type="jemstones" path="/jem" />
                     <Leaderboard type="jomstones" path="/jom" />
                     <Leaderboard type="jumstones" path="/jum" />
+                    <Leaderboard type="ticestones" path="/tice" />
                 </Router>
             </main>
         </div>

@@ -19,6 +19,8 @@ import jomstone from "../images/jomstone.webp";
 import jomstonefb from "../images/jomstone.png";
 import jumstone from "../images/jumstone.webp";
 import jumstonefb from "../images/jumstone.png";
+import ticestone from "../images/ticestone.webp";
+import ticestonefb from "../images/ticestone.png";
 
 const Image = ({ src, fallback, type = "image/webp", alt, title }) => {
     return (
@@ -31,18 +33,24 @@ const Image = ({ src, fallback, type = "image/webp", alt, title }) => {
 
 const Leaderboard = ({ type }) => {
     const [leaderboard, setLeaderboard] = React.useState([]);
+    const [loading, setIsLoading] = React.useState();
 
     React.useEffect(() => {
+        setIsLoading(true);
         fetch(`${process.env.REACT_APP_SERVER}/${type}`)
         .then(res => res.json()).then(({leaders}) => {
           if (leaders && leaders.length) {
             setLeaderboard(leaders);
+            setIsLoading(false);
           } else {
-            setLeaderboard([])
+            setLeaderboard([]);
+            setIsLoading(false);
           }
         })
     }, [type]);
- 
+    if (loading) {
+        return <h1>Loading...</h1>;
+    }
     return leaderboard.length > 0 ? (
         <div className="leaderboard">
             <table>
@@ -59,6 +67,7 @@ const Leaderboard = ({ type }) => {
                         <th scope="col">Jemstones</th>
                         <th scope="col">Jomstones</th>
                         <th scope="col">Jumstones</th>
+                        <th scope="col">Ticestones</th>
                         <th scope="col">Total Stones</th>
                     </tr>
                 </thead>
@@ -83,7 +92,7 @@ const Leaderboard = ({ type }) => {
                                         title="Amystones"
                                     />
                                     <br />
-                                    {leader.amystones}
+                                    {leader.amystones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -93,7 +102,7 @@ const Leaderboard = ({ type }) => {
                                         title="Colestones"
                                     />
                                     <br />
-                                    {leader.colestones}
+                                    {leader.colestones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -103,7 +112,7 @@ const Leaderboard = ({ type }) => {
                                         title="Gerstones"
                                     />
                                     <br />
-                                    {leader.gerstones}
+                                    {leader.gerstones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -113,7 +122,7 @@ const Leaderboard = ({ type }) => {
                                         title="Harrystones"
                                     />
                                     <br />
-                                    {leader.harrystones}
+                                    {leader.harrystones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -123,7 +132,7 @@ const Leaderboard = ({ type }) => {
                                         title="Jamstones"
                                     />
                                     <br />
-                                    {leader.jamstones}
+                                    {leader.jamstones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -133,7 +142,7 @@ const Leaderboard = ({ type }) => {
                                         title="Janstones"
                                     />
                                     <br />
-                                    {leader.janstones}
+                                    {leader.janstones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -143,7 +152,7 @@ const Leaderboard = ({ type }) => {
                                         title="Jemstones"
                                     />
                                     <br />
-                                    {leader.jemstones}
+                                    {leader.jemstones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -153,7 +162,7 @@ const Leaderboard = ({ type }) => {
                                         title="Jomstones"
                                     />
                                     <br />
-                                    {leader.jomstones}
+                                    {leader.jomstones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -163,7 +172,17 @@ const Leaderboard = ({ type }) => {
                                         title="Jumstones"
                                     />
                                     <br />
-                                    {leader.jumstones}
+                                    {leader.jumstones || 0}
+                                </td>
+                                <td>
+                                    <Image
+                                        src={ticestone}
+                                        fallback={ticestonefb}
+                                        alt="Ticestone"
+                                        title="Ticestones"
+                                    />
+                                    <br />
+                                    {leader.ticestones || 0}
                                 </td>
                                 <td>
                                     <Image
@@ -173,7 +192,7 @@ const Leaderboard = ({ type }) => {
                                         title="Total stones"
                                     />
                                     <br />
-                                    {leader.stones}
+                                    {leader.stones || 0}
                                 </td>
                             </tr>
                         );
